@@ -14,6 +14,8 @@ int segments[10][7] = {  {1,1,1,1,1,1,0},  // 0
                          {1,1,1,1,1,1,1},  // 8
                          {1,1,1,1,0,1,1}}; // 9
 
+int no_segment[7] = {0,0,0,0,0,0,0};   // 자릿수 없음
+
 int int2char(int num1, int num2);   // 정수형을 5자리 문자형으로 변경해주는 함수
 
     
@@ -41,8 +43,27 @@ int main()
 int int2char(int num1, int num2){
     int num_A_char[5] = {0,};
     int num_B_char[5] = {0,};
-    int switch_count = 0;
-                           
+    int switch_count = 0;           // A->B 할 때 얼마나 스위치를 여닫아야 하는지
+    int len_num_A, len_num_B = 0;   // 두 수의 자릿수 값을 저장하는 변수 선언
+    
+
+    // 자릿수 계산
+    int numA = num1; int numB = num2;
+    for(int s=0; s<5; s++){
+        if((numA /= 10) > 0) len_num_A++;
+        else break;
+    }
+    len_num_A++;
+
+    for(int s=0; s<5; s++){
+        if((numB /= 10) > 0) len_num_B++;
+        else break;
+    }
+    len_num_B++;
+    
+    printf("test: %d, %d", len_num_A, len_num_B);
+
+    // 입력받은 두 숫자 해체작업 시작
     num_A_char[0] = (num1 / 10000);
     num_A_char[1] = ((num1 / 1000) % 10);
     num_A_char[2] = ((num1 / 100) % 10);
@@ -55,6 +76,7 @@ int int2char(int num1, int num2){
     num_B_char[3] = ((num2 / 10) % 10);
     num_B_char[4] = ((num2 / 1) % 10);
 
+    // 총 스위치 몇번 켜고 꺼야 하는지 계산
     for(int j=0; j<5; j++){
         for(int k=0; k<7; k++){
             if (segments[num_A_char[j]][k] != segments[num_B_char[j]][k]){
@@ -62,13 +84,7 @@ int int2char(int num1, int num2){
             }
         }
     }
-
+    
     return switch_count;
 }
-
-// 자릿수 없는 경우에서 다음 숫자로 켜는 경우는 예외처리 또 해야 함.
-
-
-
-
 
