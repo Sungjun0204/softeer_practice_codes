@@ -17,6 +17,8 @@ using namespace std;
 struct meeting{
     char name[11] = {0,};   // 미팅룸 이름 저장 변수
     int time[10] = {0,};    // 예약 시간 여부 저장
+    int pos_start[10] = {0,};   // 예약 가능한 시작 시간
+    int pos_end[10] = {0,};   // 예약 가능한 종료 시간
 };
 
 struct booked{
@@ -68,12 +70,12 @@ int main(int argc, char** argv)
 
             name1 = 0;
         }
-
     }
 
-
-    int num = 2;
-    int switchnum = 0;
+    int dash = 0;         // 구분선을 N-1번만 출력하게끔 설정하는 flag변수
+    int pos_time = 0;     // available 횟수를 출력하기 위한 flag 변수
+    int num = 2;          // 0, 1을 조건에 맞게 스위칭하기 위해 사용되는 변수
+    int switchnum = 0;    // num % 2 값을 저장하기 위한 변수
     // 예약 가능한 시간 계산
     for(int i=0; i<N; i++){
         cout << "Room " << room[i].name << ":" << endl;   // 양식 출력
@@ -87,19 +89,35 @@ int main(int argc, char** argv)
                 cout << "Not available" << endl;  // 만일 회의실 예약이 꽉 차면 해당 문구 출력하고 다음 회의실 분석으로
                 break;
             }
+            else if(sum == 0){
+                cout << "1 available:" << endl << "09-18" << endl;  // 회의실 예약이 하나도 없을 때 출력
+                break;
+            }
             else if(room[i].time[k] == switchnum){
                 if(k == 0) cout << "09";
+                //else if(k == 9 && room[i].time[9] == 0 ) cout << "18" << endl; 
                 else {
-                    if(switchnum == 0) cout << k+9-1;
+                    if(switchnum == 0) {
+                        cout << k+9-1;
+                        
+                    }
                     else if(switchnum == 1) cout << "-" << k+9 << endl;
                 }
                 num++;
             }
+            else if(k==9 && room[i].time[9]==0) cout << "-18" << endl;
+            
             else continue;
         }
+
+        if(dash++ < N-1) cout << "-----" << endl;   // 마지막은 구분선 출력하지 않도록 설정
     }
     
 
     return 0;
 }
+
+
+
+
 
