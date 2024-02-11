@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 using namespace std;
-
+ 
 int change_min(char *time);
 
 int main(int argc, char** argv)
