@@ -4,7 +4,7 @@
     - 첫 번째 반복문에서는 두 수의 차이의 최소값 min을 찾는다
     - 두 번째 반복문에서는 두 수의 차이가 min인 경우의 갯수를 센다
 */
-
+ 
 
 #include<iostream>
 #include<stdio.h>
