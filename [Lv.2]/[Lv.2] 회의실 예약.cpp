@@ -7,7 +7,7 @@
     - 마지막에 0으로 채워져있는 원소들을 계산하여 적절히 시간대 값으로 환산 후 출력
 
 */
-
+ 
 
 #include<iostream>
 #include<stdio.h>
