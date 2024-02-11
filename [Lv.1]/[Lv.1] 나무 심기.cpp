@@ -2,7 +2,7 @@
 
 
 using namespace std;
-
+ 
 int main(int argc, char** argv)
 {
     int n=0;          // 땅을 심을 토지 갯수
