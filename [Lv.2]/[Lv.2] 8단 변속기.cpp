@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     }
 
     else cout << "mixed" << endl;
-    
+     
 
     
    return 0;
