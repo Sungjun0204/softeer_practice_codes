@@ -18,7 +18,7 @@ int segments[11][7] = {  {1,1,1,1,1,1,0},  // 0
 int int2char(int num1, int num2);   // 정수형을 5자리 문자형으로 변경해주는 함수
 
     
-
+ 
 
 
 int main()
